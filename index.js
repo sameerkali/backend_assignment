@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-const path = require("path");
 const bcryptjs = require("bcryptjs");
 
 dotenv.config();
@@ -38,18 +37,28 @@ const userSchema = new mongoose.Schema(
 );
 
 const User = mongoose.model("User", userSchema);
+
 // Routes
 app.get("/", (req, res) => {
-  res.send("Hello, World!");
+  res.json([
+    { taskId: 221, status: "pending" },
+    { taskId: 222, status: "wip" },
+    { taskId: 223, status: "completed" },
+    { taskId: 224, status: "wip" },
+    { taskId: 225, status: "completed" },
+    { taskId: 226, status: "pending" }
+  ]);
 });
+
 app.get("/register", (req, res) => {
   res.send("Hello, register!");
 });
+
 app.get("/login", (req, res) => {
   res.send("Hello, login!");
 });
 
-//SignUp
+// SignUp
 app.post("/register", async (req, res, next) => {
   const { username, email, password } = req.body;
   const hashedPassword = bcryptjs.hashSync(password, 10);
@@ -68,7 +77,7 @@ app.post("/register", async (req, res, next) => {
   }
 });
 
-//LogIn
+// LogIn
 app.post("/login", async (req, res, next) => {
   const { email, password } = req.body;
   try {
@@ -87,12 +96,6 @@ app.post("/login", async (req, res, next) => {
     console.log("Error in login:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
-});
-
-// Error handling middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send("Something went wrong!");
 });
 
 // Start server
