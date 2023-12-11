@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const path = require("path");
@@ -43,6 +42,8 @@ const User = mongoose.model("User", userSchema);
 app.get("/", (req, res) => {
   res.send("Hello, World!");
 });
+
+//SignUp
 app.post("/register", async (req, res, next) => {
   const { username, email, password } = req.body;
   const hashedPassword = bcryptjs.hashSync(password, 10);
@@ -60,6 +61,8 @@ app.post("/register", async (req, res, next) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
+//LogIn
 app.post("/login", async (req, res, next) => {
   const { email, password } = req.body;
   try {
