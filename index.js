@@ -41,12 +41,42 @@ const User = mongoose.model("User", userSchema);
 // Routes
 app.get("/", (req, res) => {
   res.json([
-    { taskId: 221, status: "pending" },
-    { taskId: 222, status: "wip" },
-    { taskId: 223, status: "completed" },
-    { taskId: 224, status: "wip" },
-    { taskId: 225, status: "completed" },
-    { taskId: 226, status: "pending" }
+    {
+      taskId: 221,
+      status: "pending",
+      imgURL:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgODEYm2zHSYiYK6hKxsqNrKieCQSpEl41PA&usqp=CAU"
+    },
+    {
+      taskId: 222,
+      status: "wip",
+      imgURL:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3LqYgOL48QDH72pqysAlfMiZiMJqiC4g53w"
+    },
+    {
+      taskId: 223,
+      status: "completed",
+      imgURL:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcSgQcy9bqLc1uaQTAY1wG0e65XmVEnJ8XKA&usqp=CAU"
+    },
+    {
+      taskId: 224,
+      status: "wip",
+      imgURL:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7b6vBRUKSJIJMRGojmjqRMDVDrurTht4_sw&usqp=CAU"
+    },
+    {
+      taskId: 225,
+      status: "completed",
+      imgURL:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgODEYm2zHSYiYK6hKxsqNrKieCQSpEl41PA&usqp=CAU"
+    },
+    {
+      taskId: 226,
+      status: "pending",
+      imgURL:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsLysKug4eLYCSKbmzRmuqy3Mvf53xzMaTyA&usqp=CAU"
+    }
   ]);
 });
 
